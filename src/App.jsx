@@ -11,7 +11,7 @@ function App() {
     const fetchBooks = async () => {
       try {
         const response = await fetch(
-          "https://fictional-goggles-r4pjprp7w4p43xj7-5000.app.github.dev/books"
+          "http://localhost:5001/books"
         );
 
         if (!response.ok) {
@@ -57,10 +57,13 @@ function App() {
 
       {/* ===== MAIN ===== */}
       <div className="container">
-        <h1 className="title">Welcome To Anime Books</h1>
+        <h1 className="title">✨ Welcome To Anime Books ✨</h1>
 
-        {loading && <p>Loading...</p>}
-        {error && <p>Error: {error}</p>}
+        {loading && <p>📚 Loading amazing books...</p>}
+        {error && <p>❌ Error: {error}</p>}
+        {!loading && filteredBooks.length === 0 && !error && (
+          <p>📖 No books found. Try a different search!</p>
+        )}
 
         <div className="book-grid">
           {filteredBooks.map((b) => (
